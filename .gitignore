@@ -1,5 +1,11 @@
 target/
 .idea/
+org.eclipse.*
+.project
+.lock
+*.ini
+*.zip
 *.iml
 *.log
+*.class
 .DS_Store
