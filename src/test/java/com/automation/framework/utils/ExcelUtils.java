@@ -78,10 +78,6 @@ public final class ExcelUtils {
         r2.createCell(3).setCellValue("Your username is invalid!");
         r2.createCell(4).setCellValue("Y");
 
-        for (int c = 0; c <= 4; c++) {
-          sheet.autoSizeColumn(c);
-        }
-
         try (var os = Files.newOutputStream(file)) {
           wb.write(os);
         }
