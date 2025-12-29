@@ -78,8 +78,18 @@ public final class ExcelUtils {
         r2.createCell(3).setCellValue("Your username is invalid!");
         r2.createCell(4).setCellValue("Y");
 
-        for (int c = 0; c <= 4; c++) {
-          sheet.autoSizeColumn(c);
+        // Apache POI auto-sizing can require a graphical environment (fonts/X11),
+        // which is not available on many CI/headless Linux environments.
+        // Use fixed column widths instead to keep sample generation robust.
+        int[] widths = {
+            18 * 256, // testName
+            16 * 256, // username
+            22 * 256, // password
+            40 * 256, // expectedContains
+            6 * 256   // run
+        };
+        for (int c = 0; c < widths.length; c++) {
+          sheet.setColumnWidth(c, widths[c]);
         }
 
         try (var os = Files.newOutputStream(file)) {

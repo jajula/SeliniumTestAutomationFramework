@@ -19,8 +19,9 @@ public final class DriverFactory {
   private DriverFactory() {}
 
   public static void initDriver() {
-    String browser = System.getProperty("browser", ConfigReader.get("browser")).trim().toLowerCase();
-    boolean headless = Boolean.parseBoolean(System.getProperty("headless", ConfigReader.get("headless")).trim());
+    // Prefer ConfigReader so blank system properties don't override defaults from config.properties
+    String browser = ConfigReader.get("browser").trim().toLowerCase();
+    boolean headless = ConfigReader.getBoolean("headless", false);
 
     WebDriver driver;
     switch (browser) {
