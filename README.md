@@ -6,6 +6,9 @@ Java Selenium **Page Object Model** test framework with:
 - **ExtentReports** (Spark HTML)
 - **Excel** data source (Apache POI) for data-driven tests
 
+Also includes a **Python equivalent** framework under `python/` using **pytest**,
+Selenium, webdriver-manager, and openpyxl. See `python/README.md` for details.
+
 ## How to run
 
 ### Prereqs
